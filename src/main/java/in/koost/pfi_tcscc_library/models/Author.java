@@ -35,4 +35,5 @@ public class Author {
 
     @UpdateTimestamp
     private Date updatedOn;
+
 }

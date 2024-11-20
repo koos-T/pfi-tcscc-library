@@ -13,8 +13,7 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
 
     @Override
-    public String saveBook(Book book) {
+    public void saveBook(Book book) {
         bookRepository.save(book);
-        return "Book saved successful";
     }
 }
