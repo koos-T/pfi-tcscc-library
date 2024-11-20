@@ -22,6 +22,8 @@ public class AuthorServiceImpl implements AuthorService {
     public Author saveAuthor(Author author) {
         Author authorByEmail = authorRepository.findByEmail(author.getEmail());
         return Objects.requireNonNullElseGet(authorByEmail, () -> authorRepository.save(author));
+
+
     }
 
 
