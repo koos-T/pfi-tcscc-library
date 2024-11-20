@@ -8,6 +8,8 @@ import in.koost.pfi_tcscc_library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class AuthorServiceImpl implements AuthorService {
     @Autowired
@@ -18,16 +20,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author saveAuthor(Author author) {
-        return authorRepository.save(author);
-
+        Author authorByEmail = authorRepository.findByEmail(author.getEmail());
+        return Objects.requireNonNullElseGet(authorByEmail, () -> authorRepository.save(author));
     }
 
-    @Override
-     public Author makeAuthor(Book book){
-        if(book.getAuthor() != null) {
-            authorCreate.setName(book.getAuthor().getName());
-            authorCreate.setEmail(book.getAuthor().getEmail());
-            }
-         return authorCreate.toAuthor();
-    }
+
 }

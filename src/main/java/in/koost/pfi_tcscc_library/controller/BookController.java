@@ -22,18 +22,10 @@ public class BookController {
     private BookServiceImpl bookService;
 
     @Autowired
-    private AuthorCreate authorCreate;
-
-    @Autowired
     private AuthorService authorService;
 
     @PostMapping("/saveBook")
-    public ResponseEntity<String> saveBook(@Valid @RequestBody BookCreate bookCreate){
-        Book book = bookCreate.toBook();
-        Author author = authorService.makeAuthor(book);
-        Author author1 = authorService.saveAuthor(author);
-        book.setAuthor(author1);
-        bookService.saveBook(book);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<Book> saveBook(@Valid @RequestBody BookCreate bookCreate){
+      return new ResponseEntity<>(bookService.saveBook(bookCreate), HttpStatus.OK);
     }
 }

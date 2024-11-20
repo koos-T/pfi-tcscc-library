@@ -6,5 +6,4 @@ import in.koost.pfi_tcscc_library.models.Book;
 public interface AuthorService {
 
     public Author saveAuthor(Author author);
-    public Author makeAuthor(Book book);
 }
