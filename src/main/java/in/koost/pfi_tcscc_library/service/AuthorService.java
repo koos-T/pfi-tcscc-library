@@ -1,8 +1,10 @@
 package in.koost.pfi_tcscc_library.service;
 
 import in.koost.pfi_tcscc_library.models.Author;
+import in.koost.pfi_tcscc_library.models.Book;
 
 public interface AuthorService {
 
-    public void saveAuthor(Author author);
+    public Author saveAuthor(Author author);
+    public Author makeAuthor(Book book);
 }
